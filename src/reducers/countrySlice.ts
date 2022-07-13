@@ -196,8 +196,6 @@ export const searchCountryByCode:
 
 export const selectCountries: 
 	() => Country[] = 
-	(): Country[] => {
-		console.log("selectCountries", Object.values(currentState.countries))
-		return Object.values(currentState.countries)}
+	(): Country[] =>  Object.values(currentState.countries)
 
 export default countrySlice.reducer

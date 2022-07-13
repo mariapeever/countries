@@ -15,27 +15,21 @@ module.exports = {
   }, 
   // devtool: "eval",
   devServer: { 
-    static: path.join(__dirname, "dist") 
+    static: path.join(__dirname, "dist")
+    // compress: true, // enable gzip compression
+    // historyApiFallback: true, // true for index.html upon 404, object for multiple paths
+    // hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
+    // https: false, // true for self-signed, object for cert authority
+    // noInfo: true, // only errors & warns on hot reload
   },
-  // devServer: {
-  //   // static: path.join(__dirname, "public"),
-  //   // compress: true, // enable gzip compression
-  //   // historyApiFallback: true, // true for index.html upon 404, object for multiple paths
-  //   // hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
-  //   // https: false, // true for self-signed, object for cert authority
-  //   // noInfo: true, // only errors & warns on hot reload
-  // },
+
   plugins: [
-    // new HtmlWebpackPlugin(),
     new HtmlWebpackPlugin({ // disable for production
       // title: "Development",
       // filename: "test.html",
       template: path.join(__dirname, "src", "index.html"),
     })
     // new webpack.HotModuleReplacementPlugin(),
-    // new HtmlWebpackPlugin({
-    //   title: "Development",
-    // }),
     // new webpack.DllPlugin({
     //   path: "./dist/manifest.json",
     //   entryOnly: true
@@ -46,26 +40,6 @@ module.exports = {
     // }),
   ],
   module: {
-    // rules: [
-    //   {
-    //     test: /\.tsx?$/,
-    //     use: [
-    //       {
-    //         loader: "ts-loader",
-    //         options: {
-    //           transpileOnly: true,
-    //         }
-    //       }
-    //     ],
-    //     exclude: /node_modules/,
-    //     include: path.resolve(__dirname, "src"),
-    //     // type: "javascript/auto",
-    //   },
-    //   // {
-    //   //   test: /\.css$/,
-    //   //   use: ["style-loader", "css-loader"],
-    //   // },
-    // ],
     rules: [
       {
         test: /\.jsx?$/,
@@ -111,7 +85,6 @@ module.exports = {
 
     //   /* Advanced output.library configuration (click to show) */
     // },
-
   },
 
 

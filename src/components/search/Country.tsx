@@ -27,10 +27,25 @@ import switcher from "./switcher"
 import Title from "./Title"
 import Body from "./Body"
 
+/**
+ * Fields
+ * @param  {CountryType} country The country
+ * @param  {boolean} detailed If detailed
+ * @return {{ [x: string]: any }[]} The fields
+ */
 const printFields: any = (country: CountryType, detailed: boolean): { [x: string]: any }[] => {
   return detailed ? detailedFields(country) : shortFields(country)
 }
 
+/**
+ * Countries
+ * @param  {CountryType} country The country
+ * @param  {boolean} detailed If detailed
+ * @param  {string} region The region
+ * @param  {string} query The query
+ * @param  {any} setUpdate The setUpdate upstream function
+ * @return {JSX.Element} The country component
+ */
 const Country: React.FC = ({ country, detailed, region, query, setUpdate }: any): JSX.Element => {
 
   let fields: any = printFields(country, detailed)

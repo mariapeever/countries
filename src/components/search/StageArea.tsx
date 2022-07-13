@@ -12,6 +12,18 @@ import SearchBox from "./SearchBox"
 import Filter from "./Filter"
 import BackButton from "./BackButton"
 
+/**
+ * Stage area - the search form and the regions filter
+ * @param  {string} query The query
+ * @param  {string} region The region
+ * @param  {any} setQuery The setQuery upstream function
+ * @param  {any} setUpdate The setUpdate upstream function
+ * @param  {any} setErrors The setErrors upstream function 
+ * @param  {any} selectRegion The selectRegion upstream function 
+ * @param  {boolean} short If short
+ * @param  {boolean} short If detailed
+ * @return {JSX.Element} The Stage area component
+ */
 const StageArea: React.FC = ({ 
   query, 
   region, 

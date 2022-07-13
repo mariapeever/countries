@@ -1,7 +1,3 @@
-// import unitUtils from "@bootstrap_styled/utils/lib/unitUtils"
-
-// const { math, detectUnit} = unitUtils
-
 const $dark_blue_dm			=	"hsl(209, 23%, 22%)"
 const $lighter_hover		= 	"hsl(209, 23%, 70%)"
 

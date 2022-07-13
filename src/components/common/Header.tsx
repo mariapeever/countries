@@ -1,7 +1,10 @@
 import React, { memo } from "react"
 
 import MainNav from "./MainNav"
-
+/**
+ * Header
+ * @return {JSX.Element} The header component
+ */
 const Header: React.FC = (): JSX.Element => {
   return(
     <header>

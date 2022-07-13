@@ -6,14 +6,18 @@ import {
 } from "../../styled"
 
 import switcher from "./switcher"
-
+/**
+ * Back button
+ * @param  {string} query The query
+ * @param  {string} region The region
+ * @param  {any} setUpdate The setUpdate upstream function
+ * @return {JSX.Element} The back button component
+ */
 const BackButton: React.FC = ({ query, region, setUpdate, ...rest }: any): JSX.Element => {
-  // The `state` arg is correctly typed as `RootState` already
-  // console.log("Body")
 
   const [effect, setEffect]: [
     boolean,
-    React.Dispatch<React.SetStateAction<string>>
+    React.Dispatch<React.SetStateAction<boolean>>
   ] = useState(false)
 
   const handleHover = (): void => {

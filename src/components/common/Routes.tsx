@@ -19,54 +19,53 @@ import Spinner from "./Spinner"
 
 const Search: React.LazyExoticComponent<React.FC> = 
   lazy<React.FC>((): Promise<{ default: React.FC }> => import('../search/Search')); // Lazy-loaded
-
+/**
+ * Routes - Generates routes
+ * @return {JSX.Element} The routes component
+ */
 const Routes: React.FC = (): JSX.Element => {
-
-  const [errors, setErrors]: [
-    string[],
-    React.Dispatch<React.SetStateAction<string[]>>
-  ] = useState([])
-
+  // states
   const [loaded, setLoaded]: [
     boolean,
-    React.Dispatch<React.SetStateAction<string[]>>
+    React.Dispatch<React.SetStateAction<boolean>>
   ] = useState(false)
 
+  const [countries, setCountries]: [
+    CountryType[],
+    React.Dispatch<React.SetStateAction<CountryType[]>>
+  ] = useState([])
+
+  // dispatch
   const dispatch = useAppDispatch()
    
   const getCountries: any = async ( all: boolean | null, query: string ) : Promise<void> => {
+    // get countries data
+    // dispatch to fetch countries async thunk
 
-    try {
-      const fetchedCountries: CountryType[] | any = 
-        await dispatch(fetchCountries({ query: null, prop: false }))
-          .then(unwrapResult)
+    const fetchedCountries: CountryType[] | any = 
+      await dispatch(fetchCountries({ query: null, prop: false }))
+        .then(unwrapResult)
 
-      await dispatch(
-        countriesFetched(fetchedCountries))
+    await dispatch(
+      countriesFetched(fetchedCountries))
 
-      throw Error
-    } catch (err) {
-      var errors: string[] = Array.isArray(err.message) ? 
-        err.message : new Array(err.message)
-      setErrors(errors) 
-    }
+    setCountries(selectCountries())
   }
 
-  useEffect((): void => {
-    if(!loaded) {
-      getCountries(true, null)
-      setLoaded(true)
-    }
-  }, [loaded])
- 
+  if (!loaded) {
+    getCountries(true, "")
+    if (countries.length) 
+       setLoaded(true)
+  }
+
   return(  
     <Suspense fallback={<Spinner />}> 
       <Switch>
         {[{
             path: "/",
-            data: selectCountries(),
+            data: countries,
             component: Search
-        }, ...selectCountries().map((country: {[x: string]: any }, i: number): 
+        }, ...countries.map((country: {[x: string]: any }, i: number): 
           {[x: string]: any } => {
           return {
             path: "/" + country.alpha3Code,

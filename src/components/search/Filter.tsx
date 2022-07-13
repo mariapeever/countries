@@ -15,11 +15,17 @@ import {
 
 import { regions } from "../../utils/config"
 
+/**
+ * Regions filter
+ * @param  {string} region The region
+ * @param  {any} selectRegion The selectRegion upstream function
+ * @return {JSX.Element} The Filter component
+ */
 const Filter: React.FC = ({ region, selectRegion, ...rest }: any): JSX.Element => {
 
   const [dropdownState, setDropdownState]: [
     boolean,
-    React.Dispatch<React.SetStateAction<string>>
+    React.Dispatch<React.SetStateAction<boolean>>
   ] = useState(false)
 
   return (

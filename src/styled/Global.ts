@@ -19,8 +19,6 @@ const $y_unit              =   17.5
 const $x_unit              =   15        
 
 export default {
-    // you can add meta data to your theme
-
    "$font-family-sans-serif"   :  $font_family,
    "$font-family-base"         :  $font_family,
    "$font-weight-normal"       :  "300",

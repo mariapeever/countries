@@ -18,6 +18,15 @@ import switcher from "./switcher"
 
 import Validate from "../../utils/validators" 
 
+/**
+ * Search form
+ * @param  {string} query The query
+ * @param  {string} region The region
+ * @param  {any} setQuery The setQuery upstream function
+ * @param  {any} setUpdate The setUpdate upstream function
+ * @param  {any} setErrors The setErrors upstream function
+ * @return {JSX.Element} The search form component
+ */
 const SearchBox: React.FC = ({ query, region, setQuery, setUpdate, setErrors, ...rest }: any): JSX.Element => {
 
   const handleChange = (e: any): void => {
@@ -41,7 +50,6 @@ const SearchBox: React.FC = ({ query, region, setQuery, setUpdate, setErrors, ..
   }
 
   return (
-    
     <SearchForm 
       inline 
       className="my-lg-0 form-inline">

@@ -4,8 +4,17 @@ import {
   selectCountries,
   searchCountries,
   Country as CountryType } from "../../reducers/countrySlice"
-
+/**
+ * Data switcher
+ * @param  {string} filter The filter
+ * @param  {boolean} regional If regional
+ * @param  {boolean} selected If selected
+ * @param  {string} region The region
+ * @param  {string} query The query
+ * @return {{ [x: string]: any }} The data, detailed boolean and redirect path
+ */
 const switcher = (filter, regional, selected, region, query): { [x: string]: any } => {
+  
   var update: any = []
   if (filter == "" || filter == "All" && regional) {
     update = selectCountries()

@@ -1,26 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 
 import { 
-	// themeReducer,
-	countryReducer,
-	// intradayReducer,
-	// dailyReducer,
-	// weeklyReducer,
-	// monthlyReducer,
-	// latestPriceReducer,
-	// technicalIndicatorsReducer
+	countryReducer
 } from "./reducers"
 
 const store = configureStore({
 	reducer: {
-		// theme: themeReducer,
 		symbol: countryReducer,
-		// intraday: intradayReducer,
-		// daily: dailyReducer,
-		// weekly: weeklyReducer,
-		// monthly: monthlyReducer,
-		// latestPrice: latestPriceReducer,
-		// technicalIndicators: technicalIndicatorsReducer,
 	}
 })
 

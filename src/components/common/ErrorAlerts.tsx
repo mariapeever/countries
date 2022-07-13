@@ -9,11 +9,17 @@ import {
   ErrorBox
 } from "../../styled"
 
-const ErrorAlerts: React.FC = ({errors}: any): JSX.Element  => {
 
+/**
+ * Error Alerts
+ * @param  {any} errors The errors array
+ * @return {JSX.Element} The error alerts component
+ */
+const ErrorAlerts: React.FC = ({errors}: any): JSX.Element  => {
+  // states
   const [isOpen, setIsOpen]: [
     boolean, 
-    React.Dispatch<React.SetStateAction<string[]>>
+    React.Dispatch<React.SetStateAction<boolean>>
   ] = useState(true)
 
   return (

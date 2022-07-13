@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 
 import {
   Back,
@@ -25,14 +25,12 @@ const BackButton: React.FC = ({ query, region, setUpdate, ...rest }: any): JSX.E
     setTimeout(() => setEffect(false), 1000)
   }
 
-  const handleBack = (): void => {
-    setUpdate(switcher(query, false, false, region, query))
-  }
-
   return (
     <Back 
       color="primary"
-      onClick={handleBack}
+      onClick={(e: any): void => {
+        e.preventDefault()
+        setUpdate(switcher(query, false, false, region, query))}}
       onMouseEnter={handleHover}
       size="sm"
      >

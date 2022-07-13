@@ -35,7 +35,11 @@ const switcher = (filter, regional, selected, region, query): { [x: string]: any
       return new RegExp(`.*${q}.*`, "g").test(c)
     })
   }
-
+  console.log("switcher", {
+    data: update, 
+    detailed: (update.length == 1 && selected) ? true : false, 
+    redirect: (update.length == 1 && selected) ? "/" + update[0].alpha3Code : "/"
+  })
   return ({
     data: update, 
     detailed: (update.length == 1 && selected) ? true : false, 

@@ -27,21 +27,22 @@ import {
   Input,
   Ul,
   Form,
-  DropdownMenu
+  DropdownMenu,
+  StyledComponent
 } from "@bootstrap-styled/v4"
 
 import {
   Link
 } from "react-router-dom"
 
-var Loader = require('react-loaders').Loader;
+var Loader: any = require('react-loaders').Loader;
 
 // import "loaders.css/src/animations/line-scale.scss"
 import "loaders.css/loaders.css"
 
 import { createGlobalStyle } from "styled-components"
 
-export const FontStyles = createGlobalStyle`
+export const FontStyles: any = createGlobalStyle`
 
   @font-face {
     font-family: "Nunito Sans";
@@ -63,21 +64,12 @@ export const FontStyles = createGlobalStyle`
     font-weight: 800;
     font-style: normal;
   }
-
-
 `;
 
-export const GlobalStyles = createGlobalStyle`
+export const GlobalStyles: any = createGlobalStyle`
 `;
 
-export const DefaultButton = styled.button`
-  ${(props) => `
-     background-color: ${props.theme["$btn-primary-bg"]};
-     color: ${props.theme["$btn-primary-color"]};
-  `};
-`
-
-export const Wrapper = styled(Container)`
+export const Wrapper: any = styled(Container)`
   ${(props) => `
     @media (max-width: 576px) {
       max-width: 375px!important;
@@ -87,8 +79,7 @@ export const Wrapper = styled(Container)`
     }
   `};
 `
-
-const OverlayBase = styled.div`
+const OverlayBase: any = styled.div`
   display: block;
   position: fixed;
   top: 0;
@@ -97,7 +88,7 @@ const OverlayBase = styled.div`
   background-color: hsla(100, 100%, 100%, .7);
 `
 
-const OverlayElement = styled.div`
+const OverlayElement: any = styled.div`
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -108,7 +99,92 @@ const OverlayElement = styled.div`
   width: 100vw;
 `
 
-export const Flag = styled.div`
+export const Overlay = ({ children }) => (
+  <OverlayBase>
+    <OverlayElement>
+      {children}
+    </ OverlayElement>
+  </OverlayBase>
+)
+
+export const Section: any = styled(Wrapper)`
+  ${(props) => `
+    background-color: ${props.theme["$background-color"]};
+    padding: 50px 0;
+    @media(max-width: 992px) {
+      padding: 35px 0;
+    }
+  `};
+`;
+
+export const Top: any = styled(Navbar)`
+  ${(props) => `
+    background-color: ${props.theme["$navbar-bg"]};
+    box-shadow: ${props.theme["$nav-box-shadow"]};
+    padding: 0 32px;
+    height: 80px;
+  `};
+`;
+
+export const Logo: any = styled.h1`
+  ${(props) => `
+    color: ${props.theme["$title-color"]};
+    font-size: ${props.theme["$h1-text-size"]};
+    font-weight: ${props.theme["$font-weight-bolder"]};
+    padding: 15px 0!important;
+    margin: 0;
+    font-size: 18px;
+    @media(min-width: 992px) {
+      font-size: 24px;
+    }
+  `};
+`
+
+export const Brand: any = styled(NavbarBrand)`
+  ${(props) => `
+    font-weight: 800;
+  `};
+`;
+
+export const Block: any = styled(Row)`
+  ${(props) => `
+    margin-left: -35px!important;
+    margin-right: -35px!important;
+  `};
+`;
+
+export const Stage: any = styled(Block)`
+  ${(props) => `
+    margin-bottom: 35px!important;
+  `};
+`;
+
+export const Box: any = styled.div`
+  ${(props) => `
+    background-color: ${props.theme["$box-bg"]};
+    box-shadow: ${props.theme["$box-shadow"]};
+    border-radius: ${props.theme["$border-radius"]};
+    margin-bottom: 45px;
+    text-size: ${props.theme["$body-text-size"]};
+    &:hover,
+    &:focus {
+      margin-top: -1%;
+    };
+    @media(max-width: 992px) {
+      margin-left: 35px;
+      margin-right: 35px;
+    }
+  `};
+`
+
+export const BoxDetailed: any = styled.div`
+  ${(props) => `
+    text-size: ${props.theme["$body-text-size"]};
+    margin: 0 -35px!important;
+  `};
+`
+
+export const Flag: any = styled.div`
   ${(props) => `
     background-image: url(${props.src});
     border-top-left-radius: ${props.theme["$border-radius"]};
@@ -133,46 +209,7 @@ export const Flag = styled.div`
   `};
 `
 
-export const Box = styled.div`
-  ${(props) => `
-    background-color: ${props.theme["$box-bg"]};
-    box-shadow: ${props.theme["$box-shadow"]};
-    border-radius: ${props.theme["$border-radius"]};
-    margin-bottom: 45px;
-    text-size: ${props.theme["$body-text-size"]};
-    &:hover,
-    &:focus {
-      margin-top: -1%;
-    };
-    @media(max-width: 992px) {
-      margin-left: 35px;
-      margin-right: 35px;
-    }
-  `};
-`
-
-export const BoxDetailed = styled.div`
-  ${(props) => `
-    text-size: ${props.theme["$body-text-size"]};
-    margin: 0 -35px!important;
-  `};
-`
-
-export const Logo = styled.h1`
-  ${(props) => `
-    color: ${props.theme["$title-color"]};
-    font-size: ${props.theme["$h1-text-size"]};
-    font-weight: ${props.theme["$font-weight-bolder"]};
-    padding: 15px 0!important;
-    margin: 0;
-    font-size: 18px;
-    @media(min-width: 992px) {
-      font-size: 24px;
-    }
-  `};
-`
-
-export const ShortTitle = styled.h3`
+export const ShortTitle: any = styled.h3`
   ${(props) => `
     color: ${props.theme["$title-color"]};
     font-size: ${props.theme["$h3-text-size"]};
@@ -182,7 +219,7 @@ export const ShortTitle = styled.h3`
   `};
 `
 
-export const DetailedTitle = styled.h2`
+export const DetailedTitle: any = styled.h2`
   ${(props) => `
     color: ${props.theme["$title-color"]};
     font-size: ${props.theme["$h1-text-size"]};
@@ -192,26 +229,50 @@ export const DetailedTitle = styled.h2`
   `};
 `
 
-export const Header = styled.header`
+export const Header: any = styled.header`
   ${(props) => `
     padding-top: 80px;
   `};
 `;
 
-export const Content = styled.header`
+export const Content: any = styled.header`
   ${(props) => `
     padding: 15px;
   `};
 `;
 
-export const DTerm = styled.strong`
+export const DTerm: any= styled.strong`
   ${(props) => `
     padding: 15px;
     font-weight: ${props.theme["$font-weight-bold"]};
   `};
 `;
 
-export const SearchField = styled.input`
+export const SearchForm: any = styled(Form)`
+  ${(props) => `
+    .form-group {
+      margin-bottom: 0!important;
+    }
+    @media(max-width: 992px) {
+      margin-bottom: 55px!important;
+    }
+  `};
+`;
+
+export const SearchFormGroup: any = styled(FormGroup)`
+  flex: 1!important;
+  background-color: transparent;
+`
+
+export const SearchInputGroup: any = styled(InputGroup)`
+  ${(props) => `
+    flex: 1!important;
+    box-shadow: ${props.theme["$box-shadow"]};
+    border-radius: ${props.theme["$border-radius"]}!important;
+  `};
+`;
+
+export const SearchField: any = styled.input`
   ${(props) => `
     width: 100;
     vertical-align: middle;
@@ -246,7 +307,7 @@ export const SearchField = styled.input`
   `};
 `;
 
-export const SearchIcon = styled(SearchOutline)`
+export const SearchIcon: any = styled(SearchOutline)`
   ${(props) => `
     padding: 0;
     svg {
@@ -255,7 +316,7 @@ export const SearchIcon = styled(SearchOutline)`
   `};
 `;
 
-export const ModeIcon = styled(MoonOutline)`
+export const ModeIcon: any = styled(MoonOutline)`
   ${(props) => `
     margin-right: 10px;
     svg {
@@ -264,19 +325,92 @@ export const ModeIcon = styled(MoonOutline)`
   `};
 `;
 
-export const CaretIcon = styled(MoonOutline)`
+export const CaretIcon: any = styled(MoonOutline)`
   ${(props) => `
     margin-right: 10px;
   `};
 `;
 
-export const MenuIcon = styled(MenuOutline)`
+export const MenuIcon: any = styled(MenuOutline)`
   ${(props) => `
    
   `};
 `;
 
-export const ModeButton = styled(Button)`
+export const FilterMenu: any = styled(DropdownMenu)`
+  ${(props) => `
+    background-color: ${props.theme["$btn-primary-bg"]}!important;
+    .dropdown-item {
+      color: ${props.theme["$body-color"]}!important;
+      background-color: ${props.theme["$btn-primary-bg"]}!important;
+      &:hover,
+      &:focus,
+      &:active,
+      &.active {
+        background-color: ${props.theme["$highlight"]}!important;
+      }
+    }
+  `};
+`;
+
+export const FilterButton: any = styled(ButtonDropdown)`
+  ${(props) => `
+    width: 200px;
+    height: 55px;
+    border: 0;
+    box-shadow: ${props.theme["$box-shadow"]}!important;
+    float: right;
+    &:hover,
+    &:focus {
+      box-shadow: none!important;
+    };
+    @media (max-width: 992px) {
+      float: left!important;
+    };
+    * {
+      font-size: ${props.theme["$body-font-size"]}!important;
+      font-weight: ${props.theme["$font-weight-light"]}!important;
+    }
+
+  `};
+`;
+
+export const Toggle: any = styled(DropdownToggle)`
+  ${(props) => `
+    width: 200px!important;
+    height: 55px;
+    background-color: ${props.theme["$btn-primary-bg"]};
+    border-radius: ${props.theme["$border-radius"]}!important;
+    border: 0;
+    background: ${props.theme["$btn-primary-bg"]};
+    box-shadow: ${props.theme["$box-shadow"]};
+    padding: 13.5px 15px!important;
+    line-height: 28px!important;
+    &:hover,
+    &:active,
+    &:focus,
+    &:not(:disabled),
+    :not(.disabled),
+    .active.btn-primary {
+        color: ${props.theme["$btn-primary-color"]}!important;
+        background-color: ${props.theme["$btn-primary-bg"]}!important;
+        border: 0;
+    };
+    svg {
+      width: 14px;
+    }
+  `};
+`;
+
+
+export const DefaultButton: any = styled.button`
+  ${(props) => `
+     background-color: ${props.theme["$btn-primary-bg"]};
+     color: ${props.theme["$btn-primary-color"]};
+  `};
+`
+
+export const ModeButton: any = styled(Button)`
   ${(props) => `
     font-weight: ${props.theme["$font-weight-bold"]}!important;
     &:hover
@@ -297,7 +431,7 @@ export const ModeButton = styled(Button)`
   `};
 `;
 
-export const Addon = styled(InputGroupAddon)`
+export const Addon: any = styled(InputGroupAddon)`
   ${(props) => `
     border-right: 0;
     border-radius: ${props.theme["$border-radius"]} 0 0 ${props.theme["$border-radius"]}!important;
@@ -327,108 +461,7 @@ export const Addon = styled(InputGroupAddon)`
   `};
 `;
 
-export const SearchFormGroup = styled(FormGroup)`
-  flex: 1!important;
-  background-color: transparent;
-`
-
-export const SearchInputGroup = styled(InputGroup)`
-  ${(props) => `
-    flex: 1!important;
-    box-shadow: ${props.theme["$box-shadow"]};
-    border-radius: ${props.theme["$border-radius"]}!important;
-  `};
-`;
-
-export const Section = styled(Wrapper)`
-  ${(props) => `
-    background-color: ${props.theme["$background-color"]};
-    padding: 50px 0;
-    @media(max-width: 992px) {
-      padding: 35px 0;
-    }
-  `};
-`;
-
-export const Top = styled(Navbar)`
-  ${(props) => `
-    background-color: ${props.theme["$navbar-bg"]};
-    box-shadow: ${props.theme["$nav-box-shadow"]};
-    padding: 0 32px;
-    height: 80px;
-  `};
-`;
-
-export const Brand = styled(NavbarBrand)`
-  ${(props) => `
-    font-weight: 800;
-  `};
-`;
-
-export const FilterButton = styled(ButtonDropdown)`
-  ${(props) => `
-    width: 200px;
-    height: 55px;
-    border: 0;
-    box-shadow: ${props.theme["$box-shadow"]}!important;
-    float: right;
-    &:hover,
-    &:focus {
-      box-shadow: none!important;
-    };
-    @media (max-width: 992px) {
-      float: left!important;
-    };
-    * {
-      font-size: ${props.theme["$body-font-size"]}!important;
-      font-weight: ${props.theme["$font-weight-light"]}!important;
-    }
-
-  `};
-`;
-
-export const Toggle = styled(DropdownToggle)`
-  ${(props) => `
-    width: 200px!important;
-    height: 55px;
-    background-color: ${props.theme["$btn-primary-bg"]};
-    border-radius: ${props.theme["$border-radius"]}!important;
-    border: 0;
-    background: ${props.theme["$btn-primary-bg"]};
-    box-shadow: ${props.theme["$box-shadow"]};
-    padding: 13.5px 15px!important;
-    line-height: 28px!important;
-    &:hover,
-    &:active,
-    &:focus,
-    &:not(:disabled),
-    :not(.disabled),
-    .active.btn-primary {
-        color: ${props.theme["$btn-primary-color"]}!important;
-        background-color: ${props.theme["$btn-primary-bg"]}!important;
-        border: 0;
-    };
-    svg {
-      width: 14px;
-    }
-  `};
-`;
-
-export const Block = styled(Row)`
-  ${(props) => `
-    margin-left: -35px!important;
-    margin-right: -35px!important;
-  `};
-`;
-
-export const Stage = styled(Block)`
-  ${(props) => `
-    margin-bottom: 35px!important;
-   
-  `};
-`;
-
-export const Back = styled(Button)`
+export const Back: any = styled(Button)`
   ${(props) => `
     box-shadow: ${props.theme["$box-shadow"]};
     line-height: 26px!important;
@@ -449,7 +482,7 @@ export const Back = styled(Button)`
   `};
 `;
 
-export const BodyDetailed = styled(Ul)`
+export const BodyDetailed: any = styled(Ul)`
   ${(props) => `
     margin-bottom: 70px!important;
     @media (min-width: 992px) {
@@ -458,7 +491,7 @@ export const BodyDetailed = styled(Ul)`
   `};
 `;
 
-export const BackIcon = styled(ArrowBackOutline)`
+export const BackIcon: any = styled(ArrowBackOutline)`
   ${(props) => `
     margin: 0 10px 0 0;
     svg {
@@ -468,7 +501,7 @@ export const BackIcon = styled(ArrowBackOutline)`
   `};
 `;
 
-export const FilterIcon = styled(ChevronDownOutline)`
+export const FilterIcon: any = styled(ChevronDownOutline)`
   ${(props) => `
     margin-left: 30px;
     box-shadow: none!important;
@@ -478,7 +511,20 @@ export const FilterIcon = styled(ChevronDownOutline)`
   `};
 `;
 
-export const Tag = styled(Link)`
+export const LoaderIcon: any = styled(Loader)`
+  ${(props) => `
+    @extend .ball-pulse;
+    width: 50px;
+    height: 20px;
+    > div {
+      > div {
+        background-color: ${props.theme["$loader"]}!important;
+      }
+    }
+  `};
+`
+
+export const Tag: any = styled(Link)`
   ${(props) => `
     border: 0!important;
     background-color: ${props.theme["$btn-primary-bg"]}!important;
@@ -493,69 +539,17 @@ export const Tag = styled(Link)`
   `};
 `;
 
-export const SearchForm = styled(Form)`
+export const ErrorBox: any = styled(Row)`
   ${(props) => `
-    .form-group {
-      margin-bottom: 0!important;
-    }
+    margin-top: -30px;
     @media(max-width: 992px) {
-      margin-bottom: 55px!important;
-    }
-  `};
-`;
-
-export const FilterMenu = styled(DropdownMenu)`
-  ${(props) => `
-    background-color: ${props.theme["$btn-primary-bg"]}!important;
-    .dropdown-item {
-      color: ${props.theme["$body-color"]}!important;
-      background-color: ${props.theme["$btn-primary-bg"]}!important;
-      &:hover,
-      &:focus,
-      &:active,
-      &.active {
-        background-color: ${props.theme["$highlight"]}!important;
-      }
-    }
-  `};
-`;
-
-export const LoaderIcon = styled(Loader)`
-  ${(props) => `
-    @extend .ball-pulse;
-    width: 50px;
-    height: 20px;
-    > div {
-      > div {
-        background-color: ${props.theme["$loader"]}!important;
-      }
+      margin-top: -20px;
     }
   `};
 `
 
-export const Copyright = styled.p`
+export const Copyright: any = styled.p`
   ${(props) => `
     @extend .py-5;
   `};
 `
-
-export const ErrorBox = styled(Row)`
-  ${(props) => `
-    margin-top: -30px;
-
-    @media(max-width: 992px) {
-      margin-top: -20px;
-    }
-     
-
-    }
-  `};
-`
-export const Overlay = ({ children }) => (
-  <OverlayBase>
-    <OverlayElement>
-      {children}
-    </ OverlayElement>
-  </OverlayBase>
-)
-

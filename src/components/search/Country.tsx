@@ -27,7 +27,7 @@ import switcher from "./switcher"
 import Title from "./Title"
 import Body from "./Body"
 
-const printFields = (country: CountryType, detailed: boolean): { [x: string]: any }[] => {
+const printFields: any = (country: CountryType, detailed: boolean): { [x: string]: any }[] => {
   return detailed ? detailedFields(country) : shortFields(country)
 }
 
@@ -36,7 +36,7 @@ const Country: React.FC = ({ country, detailed, region, query, setUpdate }: any)
   let fields: any = printFields(country, detailed)
   if (fields[fields.length - 1].name == "Border Countries") {
     var borderCountries: CountryType[] = fields[fields.length - 1].value.split(",")
-      .map(e => searchCountryByCode(e.trim()))
+      .map((e: string): CountryType | boolean => searchCountryByCode(e.trim()))
     fields.pop()
   }
 
@@ -53,18 +53,18 @@ const Country: React.FC = ({ country, detailed, region, query, setUpdate }: any)
         ></Title>
         <Body
           Fields={detailed ? BodyDetailed : Ul}>
-            {fields.map((e: { [x: string]: any }, i: number) => {
+            {fields.map((e: { [x: string]: any }, i: number): JSX.Element => {
               return (<Li key={i}><DTerm>{e.name}:</DTerm> {e.value}</Li>)
             })}
         </Body>
         {borderCountries &&
          <p><DTerm>Border Countries:</DTerm> 
-         {borderCountries.map((b: CountryType, i: number) => {
+         {borderCountries.map((b: CountryType, i: number): JSX.Element => {
           return (
             <Tag 
               key={i}
               to={"/" + b.alpha3Code}
-              onClick={e => {
+              onClick={(e: any): void => {
                 e.preventDefault()
                 setUpdate(switcher(b.name, false, true, "All", query))}}>
               {b.name}

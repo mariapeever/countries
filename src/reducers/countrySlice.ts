@@ -65,27 +65,29 @@ const initialState: CountryState = {
 
 var currentState: CountryState = Object.assign({}, initialState)
 
-export const fetchCountries = createAsyncThunk<
+export const fetchCountries: Promise<any> = createAsyncThunk<
 	void | Country[],
   	string
->("symbol/fetchCountries", async (query: { prop: boolean, query: string}) => {
+>("symbol/fetchCountries", async (query: { prop: boolean, query: string}): Promise<any> => {
 	// accepts contactsList ref from User
 	// add validation
-	var url = query.prop ? `https://restcountries.com/v2/${query.prop}/${query.query}` : `https://restcountries.com/v2/all`
+	var url = query.prop ? 
+		`https://restcountries.com/v2/${query.prop}/${query.query}` : 
+		`https://restcountries.com/v2/all`
 	return await fetch(url)
-		.then((response) => response.json())
-			.then((data) => {
+		.then((response: any): void => response.json())
+			.then((data: any): Country[] => {
 				return data as Country[]
-
 			})
-				.catch((error) => {
+				.catch((error: string): void => {
 					console.error("Error: ", error)
 				}) 
 })
 
 
-const constructor = (country: Country): Country  => {
-
+const constructor: 
+(country: Country) => Country = 
+(country: Country): Country  => {
 	return {
 		name: country.name,
 	    topLevelDomain: country.topLevelDomain,
@@ -115,7 +117,9 @@ const constructor = (country: Country): Country  => {
 	} // add validation
 }
 
-const prepareCountriesPayload = (payload: Country[]) : { payload: Country[] } => {
+const prepareCountriesPayload: 
+	(payload: Country[]) => { payload: Country[] } = 
+	(payload: Country[]) : { payload: Country[] } => {
 	
 	var countries: any = {}
 	payload.forEach((e: Country): void => {
@@ -126,56 +130,56 @@ const prepareCountriesPayload = (payload: Country[]) : { payload: Country[] } =>
 	return { payload: countries }
 }
 
-const prepareStatePayload = (payload: string) : { payload: string } => {
-	
-	return { payload: payload }
-}
-
-export const countrySlice = createSlice({
-	name: "country",
-	initialState,
-	reducers: {
-		countriesFetched: {
-		    reducer(state, action: PayloadAction<{ payload: { [x: string]: Country[] }}>): void {
-		    	currentState.countries = action.payload
-		    },
-		    prepare(payload: Country[]): { payload: Country[] } {
-		    	return prepareCountriesPayload(payload)
-		    }
-		},
-	}
+export const countrySlice: 
+	{ [x: string]: any } = 
+	createSlice({
+		name: "country",
+		initialState,
+		reducers: {
+			countriesFetched: {
+			    reducer(state, action: PayloadAction<{ payload: { [x: string]: Country[] }}>): void {
+			    	currentState.countries = action.payload
+			    },
+			    prepare(payload: Country[]): { payload: Country[] } {
+			    	return prepareCountriesPayload(payload)
+			    }
+			},
+		}
 })
 
-const search = (query: string): string[] => {
+const search: 
+	(query: string) => string[] = 
+	(query: string): string[] => {
 	const name = query.toLowerCase().replaceAll(new RegExp(`[ ']`, "g"), "_").replaceAll(new RegExp(`[()]`, "g"), "")
-	return Object.keys(currentState.countries).filter(val => 
+	return Object.keys(currentState.countries).filter((val: string): boolean => 
 		new RegExp(`${name}.*`, "g").test(val))
 }
 
-export const { countriesFetched } = countrySlice.actions
+export const { countriesFetched }: any = countrySlice.actions
 
-export const searchCountries = (query: string): Country[] | boolean => {
+export const searchCountries: 
+	(query: string) => Country[] | boolean = 
+	(query: string): Country[] | boolean => {
+
 	var names: string[] = search(query)
-
 	var countries: Country[] = []
-	names.forEach(name => {
+	names.forEach((name: string): void => {
 		countries.push(currentState.countries[name])
 	})
 	return countries.length ? countries : false 
 }
 
-export const searchCountryByCode = (code: string): Country | boolean => {
-	const country: Country = Object.values(currentState.countries).filter(country => {
-		if (country.alpha3Code == code) {
-			return country
-		}
-	})[0] 
-	
+export const searchCountryByCode: 
+	(code: string) => Country | boolean = 
+	(code: string): Country | boolean => {
+	const country: Country = Object.values(currentState.countries).filter((country: {[x: string]: any}): boolean =>
+		(country.alpha3Code == code) ? true : false)[0] 
 	return country ? country : false
-	
 }
 
-export const selectCountries = (): Country[] => {
+export const selectCountries: 
+	() => Country[] = 
+	(): Country[] => {
 	return Object.values(currentState.countries)}
 
 export default countrySlice.reducer

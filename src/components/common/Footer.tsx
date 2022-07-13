@@ -1,6 +1,5 @@
 import React, { memo } from "react"
 
-
 const Footer: React.FC = (): JSX.Element => {
 
   return(

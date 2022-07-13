@@ -25,16 +25,16 @@ const Filter: React.FC = ({ region, selectRegion, ...rest }: any): JSX.Element =
   return (
     <FilterButton
       isOpen={dropdownState}
-      toggle={() => setDropdownState(!dropdownState)}>
+      toggle={(): void => setDropdownState(!dropdownState)}>
       <Toggle>
         Filter by region
         <FilterIcon />
       </Toggle>
       <FilterMenu>
-        {regions.map((r, i) => {
+        {regions.map((r: string, i: number): JSX.Element => {
           return(<DropdownItem
             key={i} 
-            onClick={() => selectRegion(r)} 
+            onClick={(): void => selectRegion(r)} 
             className={r == region ? "active": ""}>{r}</DropdownItem>)
         })}
       </FilterMenu>

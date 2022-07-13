@@ -9,7 +9,7 @@ import {
   ErrorBox
 } from "../../styled"
 
-const ErrorAlerts = ({errors}: any) => {
+const ErrorAlerts: React.FC = ({errors}: any): JSX.Element  => {
 
   const [isOpen, setIsOpen]: [
     boolean, 

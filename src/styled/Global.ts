@@ -18,8 +18,6 @@ const $font_family         =   "Nunito Sans, sans-serif"
 const $y_unit              =   17.5
 const $x_unit              =   15        
 
-
-
 export default {
     // you can add meta data to your theme
 
@@ -55,8 +53,3 @@ export default {
    "$row-margin"                         : "0 -35px",
    "$line-height-base"                   : "24px"
 }
-
-
-
-
-

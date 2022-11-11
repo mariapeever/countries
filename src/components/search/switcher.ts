@@ -2,7 +2,8 @@ import React from "react"
 
 import { 
   selectCountries,
-  searchCountries } from "../../reducers/countrySlice"
+  searchCountries,
+  Country as CountryType } from "../../reducers/countrySlice"
 
 const switcher = (filter, regional, selected, region, query): { [x: string]: any } => {
   var update: any = []
@@ -14,14 +15,14 @@ const switcher = (filter, regional, selected, region, query): { [x: string]: any
     update = searchCountries(filter)
   }
   if (!regional && region != "All") {
-    update = update.filter(e => e.region == region)
+    update = update.filter((e: CountryType): boolean => e.region == region)
   } else if (regional && query.length) {
-    update = update.filter(e => {
-      const process = (c) => c.toLowerCase()
+    update = update.filter((e: CountryType): boolean => {
+      const process: (e: string) => string = (c: string): string => c.toLowerCase()
         .replaceAll(new RegExp(`[ ']`, "g"), "_")
         .replaceAll(new RegExp(`[()]`, "g"), "")
-      let q = process(query)
-      let c = process(e.name)
+      let q: string = process(query)
+      let c: string = process(e.name)
       return new RegExp(`.*${q}.*`, "g").test(c)
     })
   }

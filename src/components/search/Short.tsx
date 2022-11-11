@@ -10,7 +10,7 @@ const Short: React.FC = ({ children, country, region, query, setUpdate, ...rest 
 
   return (
     <Box
-      onClick={e => {
+      onClick={(e: any): void => {
         e.preventDefault()
         setUpdate(switcher(country.name, false, true, region, query))}}>
       {children}

@@ -8,7 +8,7 @@ import Country from "./Country"
 
 const CountryBox: React.FC = ({ detailed, Fields, subProps, ...rest }: any): JSX.Element => {
 
-  const props = detailed ? {} : subProps 
+  const props: { [x: string]: any } = detailed ? {} : subProps 
   return (
     <Col 
       lg={detailed ? "12" : "3"}> 

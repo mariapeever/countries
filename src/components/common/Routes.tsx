@@ -17,7 +17,8 @@ import {
 
 import Spinner from "./Spinner"
 
-const Search = lazy(() => import('../search/Search')); // Lazy-loaded
+const Search: React.LazyExoticComponent<React.FC> = 
+  lazy<React.FC>((): Promise<{ default: React.FC }> => import('../search/Search')); // Lazy-loaded
 
 const Routes: React.FC = (): JSX.Element => {
 
@@ -33,7 +34,7 @@ const Routes: React.FC = (): JSX.Element => {
 
   const dispatch = useAppDispatch()
    
-  const getCountries = async ( all: boolean | null, query: string ) : Promise<void> => {
+  const getCountries: any = async ( all: boolean | null, query: string ) : Promise<void> => {
 
     try {
       const fetchedCountries: CountryType[] | any = 
@@ -45,13 +46,13 @@ const Routes: React.FC = (): JSX.Element => {
 
       throw Error
     } catch (err) {
-      var errors = Array.isArray(err.message) ? 
+      var errors: string[] = Array.isArray(err.message) ? 
         err.message : new Array(err.message)
       setErrors(errors) 
     }
   }
 
-  useEffect(() => {
+  useEffect((): void => {
     if(!loaded) {
       getCountries(true, null)
       setLoaded(true)
@@ -65,13 +66,15 @@ const Routes: React.FC = (): JSX.Element => {
             path: "/",
             data: selectCountries(),
             component: Search
-        }, ...selectCountries().map((country: any, i: number) => {
+        }, ...selectCountries().map((country: {[x: string]: any }, i: number): 
+          {[x: string]: any } => {
           return {
             path: "/" + country.alpha3Code,
             data: [country],
             component: Search
           }
-        })].map((route, i) => (
+        })].map((route: {[x: string]: any }, i: number): 
+          JSX.Element => (
           <Route
             key={i}
             path={route.path}>

@@ -23,7 +23,7 @@ const SearchBox: React.FC = ({ query, region, setQuery, setUpdate, setErrors, ..
   const handleChange = (e: any): void => {
     setQuery(e.target.value)
     try {
-      let err = new Validate(
+      let err: { message: string[] } = new Validate(
         "country name",
         e.target.value,
         ["format"]).errors
@@ -33,7 +33,7 @@ const SearchBox: React.FC = ({ query, region, setQuery, setUpdate, setErrors, ..
         setErrors([])
         setUpdate(switcher(e.target.value, false, false, region, query))
       }
-    } catch(err) {
+    } catch (err: any) {
       setErrors(
         Array.isArray(err.message) ? 
           err.message : new Array(err.message))  

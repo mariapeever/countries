@@ -22,6 +22,9 @@ import Short from "./Short"
 import StageArea from "./StageArea"
 import Empty from "./Empty"
 
+import { 
+  Country as CountryType } from "../../reducers/countrySlice"
+
 const Search: React.FC = ({ children, ...rest }: any): JSX.Element => {
 
   const [query, setQuery]: [
@@ -50,8 +53,7 @@ const Search: React.FC = ({ children, ...rest }: any): JSX.Element => {
   ] = useState(false)
 
   const [update, setUpdate]: [
-    {[x: string]: any
-     },
+    { [x: string]: any },
     React.Dispatch<React.SetStateAction<string>>
   ] = useState(() => {
     return ({
@@ -74,14 +76,14 @@ const Search: React.FC = ({ children, ...rest }: any): JSX.Element => {
     setUpdate(switcher(regionName, true, false, regionName, query))
   } 
 
-  const isLoaded = (): boolean => loaded && update.data
+  const isLoaded: () => boolean = (): boolean => loaded && update.data
 
-  const redirectCheck = () => update.redirect != rest.path
-  const errorsCheck = () => errors.length > 0 
-  const shortCheck = () => !update.detailed
-  const detailedCheck = () => update.data && update.detailed
-  const loadedCheck = () => loaded && update.data
-  const emptyCheck = () => !update.data.length 
+  const redirectCheck: () => boolean = (): boolean => update.redirect != rest.path
+  const errorsCheck: () => boolean = (): boolean => errors.length > 0 
+  const shortCheck: () => boolean = (): boolean => !update.detailed
+  const detailedCheck: () => boolean = (): boolean => update.data && update.detailed
+  const loadedCheck: () => boolean = (): boolean => loaded && update.data
+  const emptyCheck: () => boolean = (): boolean => !update.data.length 
           
   return(
     <Section>
@@ -109,7 +111,7 @@ const Search: React.FC = ({ children, ...rest }: any): JSX.Element => {
         Box={detailedCheck() ? React.Fragment : Block }>
         <>
           {loadedCheck() &&
-           update.data.map((country, i) => 
+           update.data.map((country: CountryType, i: number): JSX.Element => 
             <CountryBox
               detailed={update.detailed}
               key={i}

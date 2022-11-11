@@ -1,0 +1,81 @@
+{
+  "name": "apperio",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "watch": "webpack --watch",
+    "start": "webpack serve --open",
+    "build": "babel src -d dist --extensions \".ts,.tsx\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+http://apperio-2-yuabcz@git.codesubmit.io/apperio-2/react-countries-snzegm"
+  },
+  "author": "Maria Peever",
+  "license": "ISC",
+  "bugs": {
+    "url": " http://apperio-2-yuabcz@git.codesubmit.io/apperio-2/react-countries-snzegm"
+  },
+  "homepage": " http://apperio-2-yuabcz@git.codesubmit.io/apperio-2/react-countries-snzegm#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.5",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@reduxjs/toolkit": "^1.6.1",
+    "@types/jest": "^27.0.1",
+    "@types/lodash": "^4.14.172",
+    "@types/react": "^17.0.20",
+    "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.14",
+    "css-loader": "^6.2.0",
+    "css-minimizer-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.1.1",
+    "redux-devtools": "^3.7.0",
+    "style-loader": "^3.2.1",
+    "terser-brunch": "^4.1.0",
+    "ts-jest": "^27.0.5",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.2",
+    "webpack": "^5.52.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.1"
+  },
+  "dependencies": {
+    "@bootstrap-styled/provider": "^2.0.3",
+    "@bootstrap-styled/v4": "^3.4.0",
+    "@types/react-redux": "^7.1.18",
+    "bootstrap": "^4.6.0",
+    "bootstrap-styled": "^2.7.2",
+    "crypto-random-string": "^4.0.0",
+    "i18next": "^20.6.1",
+    "loaders.css": "^0.1.2",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.8.1",
+    "react": "^16.14.0",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.14.0",
+    "react-i18next": "^11.12.0",
+    "react-ionicons": "^4.2.0",
+    "react-loadable-ts-transformer": "^0.0.5",
+    "react-loader-spinner": "^5.3.4",
+    "react-loaders": "^3.0.1",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
+    "react-table": "^7.7.0",
+    "react-transition-group": "^4.4.5",
+    "react-validation": "^3.0.7",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.4.1",
+    "validator": "^13.6.0"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  }
+}

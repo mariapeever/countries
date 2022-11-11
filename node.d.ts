@@ -1,0 +1,5 @@
+declare module "@bootstrap-styled/provider/lib/BootstrapProvider"
+declare module "@bootstrap-styled/v4"
+declare module "validator"
+declare module "react-router-dom"
+declare module "@loadable/component"

@@ -14,8 +14,16 @@ import {
   Logo
 } from "../../styled"
 
-const MainNav: React.FC = ({ children }): JSX.Element => {
-  // The `state` arg is correctly typed as `RootState` already
+import {
+  Link
+} from "react-router-dom"
+
+/**
+ * MainNav
+ * @param  {any} children The children
+ * @return {JSX.Element} The main nav component
+ */
+const MainNav: React.FC = ({ children }: any): JSX.Element => {
 
   return(
     <header>
@@ -25,7 +33,9 @@ const MainNav: React.FC = ({ children }): JSX.Element => {
         <Wrapper>
           <div className="d-flex justify-content-between">
             <Brand tag={A} to="javascript:;">
-              <Logo>Where in the world?</Logo>
+              <Logo>
+                <Link to="/">Where in the world?</Link>
+              </Logo>
             </Brand>
           </div>
           <Form inline className="my-lg-0 ml-auto">

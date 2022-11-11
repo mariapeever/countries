@@ -6,9 +6,17 @@ import {
 
 import Country from "./Country"
 
+/**
+ * Country box
+ * @param  {boolean} detailed If detailed
+ * @param  {JSX.Element} Fields The variable fields component
+ * @param  {{[x: string]: any}} subProps The props for the Fields component
+ * @return {JSX.Element} The country box component
+ */
 const CountryBox: React.FC = ({ detailed, Fields, subProps, ...rest }: any): JSX.Element => {
 
   const props: { [x: string]: any } = detailed ? {} : subProps 
+  
   return (
     <Col 
       lg={detailed ? "12" : "3"}> 

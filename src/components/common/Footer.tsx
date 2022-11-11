@@ -1,5 +1,8 @@
 import React, { memo } from "react"
-
+/**
+ * Footer
+ * @return {JSX.Element} The footer component
+ */
 const Footer: React.FC = (): JSX.Element => {
 
   return(

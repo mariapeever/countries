@@ -1,16 +1,22 @@
+// Country slice
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit"
 
+// interfaces
+
+// Flag interface
 interface Flag {
 	svg: string,
 	png: string
 }
 
+// Currency interface
 interface Currency {
 	code: string,
 	name: string,
 	symbol: string
 }
 
+// Language interface
 interface Language {
 	iso639_1: string,
 	iso639_2: string,
@@ -18,12 +24,13 @@ interface Language {
 	nativeName: string
 }
 
+// RegionalBloc interface
 interface RegionalBloc {
 	acronym: string,
 	name: string
 }
 
-// type for slice state
+// Country interface
 export interface Country {
 	"name": string,
     "topLevelDomain": string[],
@@ -52,25 +59,31 @@ export interface Country {
 	"independent": boolean
 }
 
+// CountryState interface
 export interface CountryState { 
 	countries: { [x: string]: Country },
 	status: "idle" | "loading" | "failed" | "success"
 }
 
-// initial state
+// The initial state
 const initialState: CountryState = { 
 	countries: {},
 	status: "idle"
 }
 
+// The current state
 var currentState: CountryState = Object.assign({}, initialState)
 
-export const fetchCountries: Promise<any> = createAsyncThunk<
+/**
+ * Async thunk to fetch countries data
+ * @param  {{ prop: boolean, query: string}} query The query
+ * @return {Country[]} The countries data
+ */
+export const fetchCountries: any = createAsyncThunk<
 	void | Country[],
   	string
 >("symbol/fetchCountries", async (query: { prop: boolean, query: string}): Promise<any> => {
-	// accepts contactsList ref from User
-	// add validation
+
 	var url = query.prop ? 
 		`https://restcountries.com/v2/${query.prop}/${query.query}` : 
 		`https://restcountries.com/v2/all`
@@ -84,7 +97,7 @@ export const fetchCountries: Promise<any> = createAsyncThunk<
 				}) 
 })
 
-
+// constructor
 const constructor: 
 (country: Country) => Country = 
 (country: Country): Country  => {
@@ -114,9 +127,14 @@ const constructor:
 		regionalBlocs: country.regionalBlocs,
 		cioc: country.cioc,
 		independent: country.independent
-	} // add validation
+	} 
 }
 
+/**
+ * Prepare countries payload
+ * @param  {Country[]} payload The payload
+ * @return {{ payload: Country[] }} The countries payload
+ */
 const prepareCountriesPayload: 
 	(payload: Country[]) => { payload: Country[] } = 
 	(payload: Country[]) : { payload: Country[] } => {
@@ -130,21 +148,20 @@ const prepareCountriesPayload:
 	return { payload: countries }
 }
 
-export const countrySlice: 
-	{ [x: string]: any } = 
-	createSlice({
-		name: "country",
-		initialState,
-		reducers: {
-			countriesFetched: {
-			    reducer(state, action: PayloadAction<{ payload: { [x: string]: Country[] }}>): void {
-			    	currentState.countries = action.payload
-			    },
-			    prepare(payload: Country[]): { payload: Country[] } {
-			    	return prepareCountriesPayload(payload)
-			    }
-			},
-		}
+// Country slice - redux
+export const countrySlice = createSlice({
+	name: "country",
+	initialState,
+	reducers: {
+		countriesFetched: {
+		    reducer(state, action: PayloadAction<{ payload: { [x: string]: Country[] }}>): void {		    	
+		    	currentState.countries = action.payload
+		    },
+		    prepare(payload: Country[]): { payload: Country[] } {
+		    	return prepareCountriesPayload(payload)
+		    }
+		},
+	}
 })
 
 const search: 
@@ -180,6 +197,7 @@ export const searchCountryByCode:
 export const selectCountries: 
 	() => Country[] = 
 	(): Country[] => {
-	return Object.values(currentState.countries)}
+		console.log("selectCountries", Object.values(currentState.countries))
+		return Object.values(currentState.countries)}
 
 export default countrySlice.reducer

@@ -37,7 +37,6 @@ import {
 
 var Loader: any = require('react-loaders').Loader;
 
-// import "loaders.css/src/animations/line-scale.scss"
 import "loaders.css/loaders.css"
 
 import { createGlobalStyle } from "styled-components"
@@ -128,14 +127,21 @@ export const Top: any = styled(Navbar)`
 
 export const Logo: any = styled.h1`
   ${(props) => `
-    color: ${props.theme["$title-color"]};
-    font-size: ${props.theme["$h1-text-size"]};
-    font-weight: ${props.theme["$font-weight-bolder"]};
-    padding: 15px 0!important;
-    margin: 0;
-    font-size: 18px;
-    @media(min-width: 992px) {
-      font-size: 24px;
+    a {
+      color: ${props.theme["$title-color"]};
+      font-size: ${props.theme["$h1-text-size"]};
+      font-weight: ${props.theme["$font-weight-bolder"]};
+      padding: 15px 0!important;
+      margin: 0;
+      font-size: 18px;
+      &:hover,
+      &:focus {
+        cursor: pointer;
+        text-decoration: none;
+      }
+      @media(min-width: 992px) {
+        font-size: 24px;
+      }
     }
   `};
 `
@@ -169,6 +175,7 @@ export const Box: any = styled.div`
     &:hover,
     &:focus {
       margin-top: -1%;
+      cursor: pointer;
     };
     @media(max-width: 992px) {
       margin-left: 35px;
@@ -347,6 +354,7 @@ export const FilterMenu: any = styled(DropdownMenu)`
       &:focus,
       &:active,
       &.active {
+        cursor: pointer;
         background-color: ${props.theme["$highlight"]}!important;
       }
     }
@@ -362,6 +370,7 @@ export const FilterButton: any = styled(ButtonDropdown)`
     float: right;
     &:hover,
     &:focus {
+      cursor: pointer;
       box-shadow: none!important;
     };
     @media (max-width: 992px) {
@@ -392,9 +401,10 @@ export const Toggle: any = styled(DropdownToggle)`
     &:not(:disabled),
     :not(.disabled),
     .active.btn-primary {
-        color: ${props.theme["$btn-primary-color"]}!important;
-        background-color: ${props.theme["$btn-primary-bg"]}!important;
-        border: 0;
+      cursor: pointer;
+      color: ${props.theme["$btn-primary-color"]}!important;
+      background-color: ${props.theme["$btn-primary-bg"]}!important;
+      border: 0;
     };
     svg {
       width: 14px;
@@ -413,8 +423,8 @@ export const DefaultButton: any = styled.button`
 export const ModeButton: any = styled(Button)`
   ${(props) => `
     font-weight: ${props.theme["$font-weight-bold"]}!important;
-    &:hover
-     {
+    &:hover {
+      cursor: pointer;
       color: ${props.theme["$primary-hover-color"]}!important;
       text-decoration: none!important;
       ouline: none!important;
@@ -474,6 +484,7 @@ export const Back: any = styled(Button)`
     &:not(:disabled),
     :not(.disabled),
     .active.btn-primary {
+      cursor: pointer;
       color: ${props.theme["$btn-primary-color"]}!important;
       background-color: ${props.theme["$btn-primary-bg"]}!important;
       border: 0;

@@ -1,8 +1,14 @@
 import React, { memo } from "react"
 
+/**
+ * Title
+ * @param  {JSX.Element} Heading The variable Heading component
+ * @param  {{[x: string]: any}} country The country data
+
+ * @return {JSX.Element} The title component
+ */
 const Title: React.FC = ({ Heading, country, ...rest }: any): JSX.Element => {
-  // The `state` arg is correctly typed as `RootState` already
-  // console.log("Title", country)
+
   return (
     <Heading
       className="title-link"

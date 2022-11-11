@@ -1,10 +1,10 @@
 "use strict"
+// imports
 import { 
 	Base,
-	MainNav,
-	Spinner } from "./common"
+	MainNav } from "./common"
 
+// exports
 export { 
 	Base,
-	MainNav,
-	Spinner }
+	MainNav }

@@ -3,8 +3,11 @@ import {
   Overlay,
   LoaderIcon } from "../../styled"
 
+/**
+ * Spinner
+ * @return {JSX.Element} The spinner component
+ */
 const Spinner: React.FC = (): JSX.Element => {
-  // The `state` arg is correctly typed as `RootState` already
 
   return(
     <Overlay>

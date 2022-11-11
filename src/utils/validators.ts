@@ -26,7 +26,6 @@ class Validate {
   }
 
   format = (): string | boolean => {
-    // get the maxLength from component"s props
     const regExp: any = new RegExp(/^[ÅåÇçÉéA-Za-z() ]+$/)
     if (this.value.length && !regExp.test(this.value.toString().trim())) {
       return `${this.value} is not a valid ${this.fieldName}.`

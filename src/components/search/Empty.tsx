@@ -5,6 +5,10 @@ import {
   Col
 } from "@bootstrap-styled/v4"
 
+/**
+ * Empty
+ * @return {JSX.Element} The empty component
+ */
 const Empty: React.FC = (): JSX.Element => {
 
   return (

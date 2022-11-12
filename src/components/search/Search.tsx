@@ -96,9 +96,7 @@ const Search: React.FC = (props): JSX.Element => {
           
   return(
     <Section>
-      {redirectCheck() && 
-        <Redirect to={update.redirect} />}
-
+      <Redirect to={update.redirect} />
       <StageArea
         query={query}
         region={region}

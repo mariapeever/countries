@@ -6,7 +6,7 @@ import {
 
 const store = configureStore({
 	reducer: {
-		symbol: countryReducer,
+		symbol: countryReducer
 	}
 })
 

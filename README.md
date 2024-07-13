@@ -1,2 +1,2 @@
 # countries
-Country information app - React, Redux, JavaScript, TypeScript, WebPack, Babel, Styled Components, Bootstrap Styled, Jest
+Country information app - React, TypeScript, Redux, WebPack, Babel, Styled Components, Bootstrap Styled, Jest, etc.
